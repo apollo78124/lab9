@@ -1,0 +1,33 @@
+.tableBack {
+	background-color: #D3D3D3;
+}
+
+#header {
+	background-color: #7386D5;
+	height: 30px;
+	border: 1px solid darkGray;
+	text-align: center;
+}
+
+#headerText{
+	margin-top: 0px;	
+}
+
+
+#sidebar {
+	background-color: #466551;
+	border: thin solid lightGray;
+	margin-top: 50px;
+	width: 200px;
+	height: 500px;
+}
+
+#content {
+	background-color: #7386D5;
+	border: thin solid lightGray;
+	position: absolute;
+	right: 8px;
+	left: 230px;
+	height: 500px;
+	top: 90px;
+}

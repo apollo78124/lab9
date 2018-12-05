@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+	
+	<f:loadBundle basename="com.jsf.messages" var="msgs"/>
+
+<h:body>
+	<ui:composition template="/templates/common.xhtml">
+		<ui:define name="windowTitle">
+      	#{msgs.addUser}
+    	</ui:define>
+    	<ui:define name="header">
+    		<h1 id="headerText">#{msgs.addUser}</h1>
+    	</ui:define>
+		<ui:define name="sidebar">
+			<h:form>
+				<h2>#{msgs.actions}</h2>
+			</h:form>
+		</ui:define>
+<ui:define name="content">
+			<h1>Add Info of the New User</h1>
+					<h:form>
+						<table class="tableBack">
+				            <tr>
+				                <td>SupplierID:</td>
+				                <td><h:inputText id="empNumber" value="#{supplierFunction.supplierId}">
+				                <f:convertNumber integerOnly="true" type="number" />
+				                </h:inputText></td>
+				            </tr>
+				           <tr>
+				                <td>supplierName:</td>
+				                <td><h:inputText value="#{supplierFunction.supplierName}"/></td>
+				            </tr>         
+							<tr>
+				                <td>contactName:</td>
+				                <td><h:inputText value="#{supplierFunction.contactName}"/></td>
+				            </tr>    
+							<tr>
+				                <td>contactTitle:</td>
+				                <td><h:inputText value="#{supplierFunction.contactTitle}"/></td>
+				            </tr>  
+							<tr>
+				                <td>address:</td>
+				                <td><h:inputText value="#{supplierFunction.address}"/></td>
+				            </tr>       
+							<tr>
+				                <td>city:</td>
+				                <td><h:inputText value="#{supplierFunction.city}"/></td>
+				            </tr>           
+							<tr>
+				                <td>postalCode:</td>
+				                <td><h:inputText value="#{supplierFunction.postalCode}"/></td>
+				            </tr>     
+							<tr>
+				                <td>stateOrProvince:</td>
+				                <td><h:inputText value="#{supplierFunction.stateOrProvince}"/></td>
+				            </tr>
+							<tr>
+				                <td>country:</td>
+				                <td><h:inputText value="#{supplierFunction.country}"/></td>
+				            </tr>        
+							<tr>
+				                <td>phoneNumber:</td>
+				                <td><h:inputText value="#{supplierFunction.phoneNumber}"/></td>
+				            </tr>    
+							<tr>
+				                <td>faxNumber:</td>
+				                <td><h:inputText value="#{supplierFunction.faxNumber}"/></td>
+				            </tr>      
+							<tr>
+				                <td>paymentTerms:</td>
+				                <td><h:inputText value="#{supplierFunction.paymentTerms}"/></td>
+				            </tr>   
+							<tr>
+				                <td>emailAddress:</td>
+				                <td><h:inputText value="#{supplierFunction.emailAddress}"/></td>
+				            </tr>   
+							<tr>
+				                <td>notes:</td>
+				                <td><h:inputText value="#{supplierFunction.notes}"/></td>
+				            </tr>       
+				        </table>
+				        <p>
+				            <h:commandButton value="Save" action="#{supplierFunction.addUser}" />
+				        </p>
+					</h:form>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>

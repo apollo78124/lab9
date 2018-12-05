@@ -1,0 +1,160 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsf/core">
+
+<f:loadBundle basename="com.jsf.messages" var="msgs" />
+
+<h:body>
+	<ui:composition template="/templates/common.xhtml">
+
+		<ui:define name="windowTitle">
+      	#{msgs.alanding}
+    	</ui:define>
+
+		<ui:define name="header">
+			<h1 id="headerText">#{msgs.alanding}</h1>
+		</ui:define>
+
+		<ui:define name="sidebar">
+			<h:form>
+				<h2>#{msgs.actions}</h2>
+				<p>
+					<h:commandButton value="Add" action="add" />
+				</p>
+				<p>
+					<h:commandButton value="Go Back" action="#{supplierFunction.goBack}" />
+				</p>
+			</h:form>
+		</ui:define>
+
+		<ui:define name="content">
+			<h1>List of Users</h1>
+
+			<h:form>
+				<table class="tableBack">
+					<tr>
+						<td>Search by Name:</td>
+						<td><h:inputText value="#{supplierFunction.nameSearch}" /></td>
+						<td><h:commandButton value="Search"
+					action="#{supplierFunction.searchUserByUserName}" /></td>
+					</tr>
+				</table>
+				<h:dataTable class="tableBack" value="#{supplierFunction.suppliers}"
+					var="userList" border="2" cellspacing="1" cellpadding="1">
+					<h:column>
+						<c:facet name="header">SupplierID</c:facet>
+			
+						<h:outputText value="#{userList.supplierId}"
+							rendered="#{not userList.canEdit}" />
+					</h:column>
+					<h:column>
+						<c:facet name="header">SupplierName</c:facet>
+						<h:inputText value="#{userList.supplierName}" size="10"
+							rendered="#{userList.canEdit}" />
+						<h:outputText value="#{userList.supplierName}"
+							rendered="#{not userList.canEdit}" />
+					</h:column>
+					<h:column>
+						<c:facet name="header">ContactName</c:facet>
+						<h:inputText value="#{userList.contactName}" size="10"
+							rendered="#{userList.canEdit}" />
+						<h:outputText value="#{userList.contactName}"
+							rendered="#{not userList.canEdit}" />
+					</h:column>
+					<h:column>
+						<c:facet name="header">ContactTitle</c:facet>
+						<h:inputText value="#{userList.contactTitle}" size="10"
+							rendered="#{userList.canEdit}" />
+						<h:outputText value="#{userList.contactTitle}"
+							rendered="#{not userList.canEdit}" />
+					</h:column>
+					<h:column>
+						<c:facet name="header">Address</c:facet>
+						<h:inputText value="#{userList.address}" size="10"
+							rendered="#{userList.canEdit}" />
+						<h:outputText value="#{userList.address}"
+							rendered="#{not userList.canEdit}" />
+					</h:column>
+					<h:column>
+						<c:facet name="header">City</c:facet>
+						<h:inputText value="#{userList.city}" size="10"
+							rendered="#{userList.canEdit}" />
+						<h:outputText value="#{userList.city}"
+							rendered="#{not userList.canEdit}" />
+					</h:column>
+					<h:column>
+						<c:facet name="header">PostalCode</c:facet>
+						<h:inputText value="#{userList.postalCode}" size="10"
+							rendered="#{userList.canEdit}" />
+						<h:outputText value="#{userList.postalCode}"
+							rendered="#{not userList.canEdit}" />
+					</h:column>
+					<h:column>
+						<c:facet name="header">StateOrProvince</c:facet>
+						<h:inputText value="#{userList.stateOrProvince}" size="10"
+							rendered="#{userList.canEdit}" />
+						<h:outputText value="#{userList.stateOrProvince}"
+							rendered="#{not userList.canEdit}" />
+					</h:column>
+					<h:column>
+						<c:facet name="header">Country</c:facet>
+						<h:inputText value="#{userList.country}" size="10"
+							rendered="#{userList.canEdit}" />
+						<h:outputText value="#{userList.country}"
+							rendered="#{not userList.canEdit}" />
+					</h:column>
+					<h:column>
+						<c:facet name="header">PhoneNumber</c:facet>
+						<h:inputText value="#{userList.phoneNumber}" size="10"
+							rendered="#{userList.canEdit}" />
+						<h:outputText value="#{userList.phoneNumber}"
+							rendered="#{not userList.canEdit}" />
+					</h:column>
+					<h:column>
+						<c:facet name="header">FaxNumber</c:facet>
+						<h:inputText value="#{userList.faxNumber}" size="10"
+							rendered="#{userList.canEdit}" />
+						<h:outputText value="#{userList.faxNumber}"
+							rendered="#{not userList.canEdit}" />
+					</h:column>        PaymentTerms = null;
+        		<h:column>
+						<c:facet name="header">EmailAddress</c:facet>
+						<h:inputText value="#{userList.emailAddress}" size="10"
+							rendered="#{userList.canEdit}" />
+						<h:outputText value="#{userList.emailAddress}"
+							rendered="#{not userList.canEdit}" />
+					</h:column>
+					<h:column>
+						<c:facet name="header">Notes</c:facet>
+						<h:inputText value="#{userList.notes}" size="10"
+							rendered="#{userList.canEdit}" />
+						<h:outputText value="#{userList.notes}"
+							rendered="#{not userList.canEdit}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Edit</f:facet>
+						<h:commandButton value="Edit"
+							action="#{supplierFunction.edit(userList)}"
+							rendered="#{not userList.canEdit}">
+						</h:commandButton>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Delete</f:facet>
+						<h:commandButton value="Delete"
+							action="#{supplierFunction.delete(userList)}" />
+					</h:column>
+				</h:dataTable>
+				<br />
+				<h:commandButton value="Save User List"
+					action="#{supplierFunction.save}" />
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
