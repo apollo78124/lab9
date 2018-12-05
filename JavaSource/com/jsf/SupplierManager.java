@@ -26,7 +26,6 @@ import javax.ws.rs.core.MediaType;
  * @version 1.0
  * 
  */
-@Path("/service")
 @Dependent
 @Stateless
 public class SupplierManager implements Serializable {
@@ -64,9 +63,7 @@ public class SupplierManager implements Serializable {
      * Persist Supplier record into database.  id must be unique.
      * @param supplier the record to be persisted.
      */
-    @GET 
-    @Path("/addNew") 
-    @Produces(MediaType.APPLICATION_XML)
+
     public void persist(Supplier supplier) {
         em.persist(supplier);
     }
@@ -92,9 +89,7 @@ public class SupplierManager implements Serializable {
      * Return Suppliers table as array of Supplier.
      * @return Supplier[] of all records in Suppliers table
      */
-    @GET 
-    @Path("/all") 
-    @Produces(MediaType.APPLICATION_XML)
+    
     public List<Supplier> getAll() {
         TypedQuery<Supplier> query = em.createQuery("select s from Supplier s",
                 Supplier.class); 

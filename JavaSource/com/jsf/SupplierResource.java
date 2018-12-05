@@ -23,6 +23,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import com.restfully.shop.domain.Customer;
+
 
 
 
@@ -36,7 +38,7 @@ public class SupplierResource {
 
     public SupplierResource() {
     }
-    @javax.transaction.Transactional
+    
     @POST
     @Consumes("application/xml")
     public Response createCustomer(InputStream is) {
@@ -45,27 +47,26 @@ public class SupplierResource {
         
         return Response.created(URI.create("/supplier/" + s.getId())).build();
     }
-    @javax.transaction.Transactional
+    
     @GET
-    @Path("{id}")
+    @Path("/{id}")
     @Produces("application/xml")
     public StreamingOutput getSupplier(@PathParam("id") int id) {
-        System.out.println("Get Supplier");
-       final Supplier customer = sm.find(id);
-       if (customer == null) {
-          throw new WebApplicationException(Response.Status.NOT_FOUND);
-       }
-       return new StreamingOutput() {
-          public void write(OutputStream outputStream) throws IOException, WebApplicationException {
-             outputSupplier(outputStream, customer);
-          }
-       };
+        Supplier customer = sm.find(id);
+        if (customer == null) {
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
+         }
+         return new StreamingOutput() {
+            public void write(OutputStream outputStream) throws IOException, WebApplicationException {
+               outputSupplier(outputStream, customer);
+            }
+         };
     }
     
     protected void outputSupplier(OutputStream os, Supplier cust) throws IOException {
         System.out.println("Output Supplier");
         PrintStream writer = new PrintStream(os);
-        writer.println("<supplier id=\"" + cust.getId() + "\">");
+        writer.println("<supplier id=" + cust.getId() + ">");
         writer.println("   <address>" + cust.getAddress() + "</address>");
         writer.println("   <city>" + cust.getCity() + "</city>");
         writer.println("   <contactName>" + cust.getContactName() + "</contactName>");
